@@ -1,0 +1,12 @@
+<%= simple_form_for @bill do |f| %>
+  <%= f.association :company %>
+  <%= f.input :name, required: true, error: "Name is mandatory, please specify one" %>
+  <%= f.input :period, label: "From" %>
+  <%= f.input :end_period, label: "To" %>
+  <%= f.input :amount %>
+  <%= f.input :deadline %>
+  <%= f.input :paid %>
+  <%= f.button :submit %>
+<% end %>
+
+
