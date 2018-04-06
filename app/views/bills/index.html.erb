@@ -1,39 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bills</h1>
+<div class="col-md-12">
+  <div class="card card-plain table-plain-bg">
+    <div class="card-header ">
+      <h1 class="card-title">Bills</h1>
+      <p class="card-category">List of all bills</p>
+    </div>
+    <div class="card-body table-full-width table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <th>Company</th>
+          <th>Name</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Amount</th>
+          <th>Deadline</th>
+          <th>Paid</th>
+        </thead>
+        <tbody>
+          <% @bills.each do |bill| %>
+          <tr>
+            <td><%= bill.company.name %></td>
+            <td><%= bill.name %></td>
+            <td><%= bill.period.strftime("%d/%m/%Y") %></td>
+            <td><%= bill.end_period.strftime("%d/%m/%Y") %></td>
+            <td><%= bill.amount %></td>
+            <td><%= bill.deadline.strftime("%d/%m/%Y") %></td>
+            <td>
+              <% if bill.paid? %>
+              <%= content_tag :i, "", class: "nc-icon nc-check-2" %>
+              <% else %>
+              <%= content_tag :i, "", class: "nc-icon nc-simple-delete" %>
+              <% end %>
+            </td>
+            <td class="td-actions text-right">
+              <button type="button" rel="tooltip" title="Show Bill" class="btn btn-simple btn-link">
+                <%= link_to bill do %>
+                   <i class="fas fa-eye"></i>
+                <% end %>
+              </button>
+              <button type="button" rel="tooltip" title="Edit Bill" class="btn btn-simple btn-link">
+                <%= link_to edit_bill_path(bill) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+              </button>
+              <button type="button" rel="tooltip" title="Delete Bill" class="btn btn-simple btn-link">
+                <%= link_to bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+             </button>
+           </td>
+         </tr>
+         <% end %>
+       </tbody>
+     </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Name</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Amount</th>
-      <th>Deadline</th>
-      <th>Paid</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+     <br>
 
-  <tbody>
-    <% @bills.each do |bill| %>
-      <tr>
-        <td><%= bill.company.name %></td>
-        <td><%= bill.name %></td>
-        <td><%= bill.period.strftime("%d/%m/%Y") %></td>
-        <td><%= bill.end_period.strftime("%d/%m/%Y") %></td>
-        <td><%= bill.amount %></td>
-        <td><%= bill.deadline.strftime("%d/%m/%Y") %></td>
-        <td><%= bill.paid %></td>
-        <td><%= link_to 'Show', bill %></td>
-        <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
-        <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Bill', new_bill_path %>
+     <%= link_to 'New Bill', new_bill_path %>
+   </div>
+ </div>
+</div>
