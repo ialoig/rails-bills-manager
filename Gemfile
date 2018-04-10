@@ -53,4 +53,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 gem 'coffee-script-source', '1.8.0'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap', '~> 4.0.0'
