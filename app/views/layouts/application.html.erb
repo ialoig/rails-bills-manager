@@ -8,32 +8,40 @@
         <title>HomeBillsManager</title>
 
         <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        
-        <!-- Fonts and icons 
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />-->
-        <!-- CSS Files 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+
+        <!-- Stylesheets references on Asssets -->
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload', debug: true %>
+
+        <!-- Javascript references -->
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', debug: true  %>
     </head>
 
     <body>
-        <div class="wrapper">
-            <!-- sidebar -->
-            <%= render :partial => 'layouts/sidebar' %>
+        <div id="wrapper">
 
-            <div class="main-panel">
-                <!-- navigation top bar -->
-                <%= render :partial => 'layouts/navigation' %>
-                
-                <%= yield %>
+            <!-- Sidebar -->
+            <%= render :partial => 'layouts/navigation' %>
+
+            <!-- Page Content -->
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <%= yield %>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
             </div>
+            <!-- /#page-wrapper -->
+
             
-            <!-- footer -->
-            <%= render :partial => 'layouts/footer' %>
         </div>
+        <!-- /#wrapper -->
     </body>
+
     
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 

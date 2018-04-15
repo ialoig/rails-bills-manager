@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-//= require light-bootstrap-dashboard
-//= require jquery_ujs
+//= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require bootstrap
+//= require metisMenu/metisMenu
+//= require dataTables/jquery.dataTables
+//= require dataTables/dataTables.bootstrap
+//= require dataTables/dataTables.responsive
+//= require sb-admin-2
 //= require_tree .
