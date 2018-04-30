@@ -29,11 +29,10 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
-        format.json { render :show, status: :created, location: @bill }
+        flash[:success] = 'Bill was successfully created.'
+        format.html { redirect_to bills_url }
       else
         format.html { render :new }
-        format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +42,10 @@ class BillsController < ApplicationController
   def update
     respond_to do |format|
       if @bill.update(bill_params)
-        format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bill }
+        flash[:success] = 'Bill was successfully updated.'
+        format.html { redirect_to bills_url }
       else
         format.html { render :edit }
-        format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,8 +55,8 @@ class BillsController < ApplicationController
   def destroy
     @bill.destroy
     respond_to do |format|
-      format.html { redirect_to bills_url, notice: 'Bill was successfully destroyed.' }
-      format.json { head :no_content }
+      flash[:success] = 'Bill was successfully destroyed.'
+      format.html { redirect_to bills_url }
     end
   end
 

@@ -28,8 +28,8 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
+        flash[:success] = 'Company was successfully created.'
+        format.html { redirect_to companies_url}
       else
         format.html { render :new }
         format.json { render json: @company.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { render :show, status: :ok, location: @company }
+        flash[:success] = 'Company was successfully updated.'
+        format.html { redirect_to companies_url}
       else
         format.html { render :edit }
         format.json { render json: @company.errors, status: :unprocessable_entity }
@@ -56,8 +56,8 @@ class CompaniesController < ApplicationController
   def destroy
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
-      format.json { head :no_content }
+      flash[:success] = 'Company was successfully destroyed.'
+      format.html { redirect_to companies_url}
     end
   end
 
