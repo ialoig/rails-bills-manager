@@ -19,4 +19,7 @@
 //= require dataTables/dataTables.bootstrap
 //= require dataTables/dataTables.responsive
 //= require sb-admin-2
-//= require_tree .
+//= require plugins/bootstrap-datepicker
+//= require plugins/bootstrap-notify
+//= require plugins/bootstrap-switch
+//= require plugins/nouislider.min
