@@ -1,7 +1,7 @@
 <%= simple_form_for @company do |f| %>
   <%= f.input :name, as: :string, required: true %>
   <%= f.input :category, as: :string, required: true, label: "Category" %>
-  <%= f.button :submit, input_html: { class: "actions"} %>
+  <%= f.button :submit, class: "btn btn-outline btn-primary" %>
 <% end %>
 
 <br>

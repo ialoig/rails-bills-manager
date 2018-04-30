@@ -6,12 +6,12 @@
   <%= f.input :amount, as: :string %>
   <%= f.input :deadline, as: :string, required: true, :placeholder => 'Select due date', input_html: { class: "daterange"}, label: "Deadline" %>
   <%= f.input :paid %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-outline btn-primary" %>
 <% end %>
 
 <br>
 <div class="wall">
-  <%= link_to 'Back', bills_path, class: "btn btn-default" %>
+  <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default" %>
 </div>
 
 <script type="text/javascript">
