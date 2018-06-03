@@ -23,3 +23,5 @@
 //= require plugins/bootstrap-notify
 //= require plugins/bootstrap-switch
 //= require plugins/nouislider.min
+//= require chartkick/highcharts
+//= require chartkick

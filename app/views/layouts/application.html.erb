@@ -25,10 +25,7 @@
             <!-- Page Content -->
             <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
-                        <%= yield %>
-                    </div>
-                    <!-- /.row -->
+                    <%= yield %>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -38,7 +35,12 @@
         <!-- /#wrapper -->
     </body>
 
-    
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+      $(document).ready(function() {
+        $('#dataTables-model').DataTable({
+          responsive: true
+        });
+      });
+    </script>
 </html>
