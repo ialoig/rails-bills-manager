@@ -54,3 +54,5 @@ gem 'simple_form'
 gem 'coffee-script-source', '1.8.0'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
+gem "chartkick"
+gem 'groupdate'
