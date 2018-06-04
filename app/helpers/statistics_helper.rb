@@ -4,10 +4,12 @@ module StatisticsHelper
     column_chart bills_amount_by_year_charts_path, height: '300px', library: {
       title: {text: 'Amount by Month', x: -20},
       yAxis: {
-       title: {
-         text: 'Amount (€)'
-       }
-     },
+        title: {
+          text: 'Amount (€)'
+        },
+        tickInterval: 10
+      },
+
       xAxis: {
         title: {
           text: 'Month'
