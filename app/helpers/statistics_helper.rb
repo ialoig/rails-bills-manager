@@ -7,15 +7,18 @@ module StatisticsHelper
         title: {
           text: 'Amount (€)'
         },
-        tickInterval: 10
+        tickInterval: 50,
+        labels: {
+            format: '{value} €'
+        }
       },
-
       xAxis: {
-        title: {
-          text: 'Month'
-        },
         crosshair: true
-      }
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b><br/>',
+        valueSuffix: ' €',
+      },
     }
  end
 
@@ -23,16 +26,21 @@ module StatisticsHelper
     column_chart bills_amount_by_company_charts_path, height: '300px', library: {
       title: {text: 'Amount by Company', x: -20},
       yAxis: {
-       title: {
-         text: 'Amount (€)'
-       }
-     },
-      xAxis: {
         title: {
-          text: 'Company'
+          text: 'Amount (€)'
         },
-        crosshair: true
-      }
+        tickInterval: 50,
+        labels: {
+            format: '{value} €'
+        }
+      },
+      xAxis: {
+        crosshair: true,
+      },
+      tooltip: { 
+        pointFormat: '{series.name}: <b>{point.y}</b><br/>',
+        valueSuffix: ' €',
+      },
     }
   end
 
