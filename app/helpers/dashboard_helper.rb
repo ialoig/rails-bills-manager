@@ -1,13 +1,12 @@
-module StatisticsHelper
-  
-  def bills_amount_by_year
+module DashboardHelper
+
+	def bills_amount_by_year
     column_chart bills_amount_by_year_charts_path, height: '300px', library: {
-      title: {text: 'Amount by Month', x: -20},
       yAxis: {
         title: {
           text: 'Amount (€)'
         },
-        tickInterval: 50,
+        tickInterval: 20,
         labels: {
             format: '{value} €'
         }
@@ -24,12 +23,11 @@ module StatisticsHelper
 
   def bills_amount_by_company
     column_chart bills_amount_by_company_charts_path, height: '300px', library: {
-      title: {text: 'Amount by Company', x: -20},
       yAxis: {
         title: {
           text: 'Amount (€)'
         },
-        tickInterval: 50,
+        tickInterval: 20,
         labels: {
             format: '{value} €'
         }
@@ -44,4 +42,5 @@ module StatisticsHelper
     }
   end
 
+  
 end

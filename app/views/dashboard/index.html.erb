@@ -1,0 +1,40 @@
+<!-- /.row -->
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Dashboard</h1>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Charts
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#home" data-toggle="tab">Amount by Year</a>
+					</li>
+					<li>
+						<a href="#profile" data-toggle="tab">Amount by Company</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="home">
+						<br>
+						<br>
+						<%= bills_amount_by_year %>
+					</div>
+
+					<div class="tab-pane fade" id="profile">
+						<br>
+						<br>
+						<%= bills_amount_by_company %>
+					</div>
+				</div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+</div>

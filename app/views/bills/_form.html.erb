@@ -1,23 +1,46 @@
-<%= simple_form_for @bill do |f| %>
-  <%= f.association :company %>
-  <%= f.input :name, as: :string, required: true %>
-  <%= f.input :period, as: :string, required: true, :placeholder => 'Select From', input_html: { class: "daterange"},label: "From" %>
-  <%= f.input :end_period, as: :string, required: true, :placeholder => 'Select To', input_html: { class: "daterange"}, label: "To" %>
-  <%= f.input :amount, as: :string %>
-  <%= f.input :deadline, as: :string, required: true, :placeholder => 'Select due date', input_html: { class: "daterange"}, label: "Deadline" %>
-  <%= f.input :paid %>
-  <%= f.button :submit, class: "btn btn-outline btn-primary" %>
-<% end %>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        
+        <div class="row">
+          <div class="col-lg-8">
+            <%= simple_form_for @bill do |f| %>
+            <%= f.association :company %>
+            <%= f.input :name, as: :string, required: true %>
+            <div class="row">
+              <%= f.input :period, as: :string, required: true, :placeholder => 'Select From', 
+                input_html: { class: "daterange"}, wrapper_html: { class: "col-lg-6"}, label: "From" %>
+              <%= f.input :end_period, as: :string, required: true, :placeholder => 'Select To',
+                input_html: { class: "daterange"}, wrapper_html: { class: "col-lg-6"}, label: "To" %>
+            </div>
+            <%= f.input :amount, as: :string %>
+            <div class="row">
+              <%= f.input :deadline, as: :string, required: true, :placeholder => 'Select due date',
+                input_html: { class: "daterange"}, wrapper_html: { class: "col-lg-6"}, label: "Deadline" %>
+            </div>
+            <%= f.input :paid %>
+            <%= f.button :submit, class: "btn btn-outline btn-primary" %>
+            <% end %>
+          </div>
+        </div>
 
-<br>
-<div class="wall">
-  <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default" %>
+        <br>
+        
+        <div class="wall">
+          <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
+
 <script type="text/javascript">
-	$('.daterange').datepicker({
-		format: "dd-mm-yyyy",
-		autoclose: true,
-		todayHighlight: true
-	});
+ $('.daterange').datepicker({
+  format: "dd-mm-yyyy",
+  autoclose: true,
+  todayHighlight: true
+});
 </script>
