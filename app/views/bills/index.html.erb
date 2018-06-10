@@ -47,18 +47,18 @@
                       <% end %>
                     </td>
                     <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="Show Bill" class="btn btn-simple btn-link center">
+                      <button type="button" rel="tooltip" title="Show Bill" class="btn btn-default btn-circle">
                         <%= link_to bill do %>
-                        <i class="fa fa-eye"></i>
+                          <i class="fa fa-eye"></i>
                         <% end %>
                       </button>
-                      <button type="button" rel="tooltip" title="Edit Bill" class="btn btn-simple btn-link center">
+                      <button type="button" rel="tooltip" title="Edit Bill" class="btn btn-warning btn-circle">
                         <%= link_to edit_bill_path(bill) do %>
                         <i class="fa fa-edit"></i>
                         <% end %>
                       </button>
                       
-                      <button type="button" rel="tooltip" title="Delete Bill" class="btn btn-simple btn-link center">
+                      <button type="button" rel="tooltip" title="Delete Bill" class="btn btn-danger btn-circle">
                         <%= link_to bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <i class="fa fa-trash"></i>
                         <% end %>

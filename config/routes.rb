@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   	resources :companies
   	resources :bills
-  	resources :statistics
+  	resources :dashboard
 
   	resources :charts, only: [] do
 		collection do
@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 	  	end
   	end
 
-  	root "statistics#index"
+  	root "dashboard#index"
 end

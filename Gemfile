@@ -56,3 +56,4 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem "chartkick"
 gem 'groupdate'
+gem 'rails_refactor'
