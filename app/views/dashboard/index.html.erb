@@ -1,7 +1,33 @@
 <!-- /.row -->
 <div class="row">
+	<h1 class="page-header">Dashboard</h1>
+
+
+	<div class="col-lg-3 col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-file-text-o fa-5x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge"><%= total_bills %></div>
+						<div>Total Bills!</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<%= link_to new_bill_path do %>
+				<span class="pull-left">New Bill</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
 	<div class="col-lg-12">
-		<h1 class="page-header">Dashboard</h1>
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<i class="fa fa-bar-chart-o fa-fw"></i> Charts

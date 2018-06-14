@@ -42,5 +42,10 @@ module DashboardHelper
     }
   end
 
+
+  def total_bills
+    @bill.count
+  end
+
   
 end
