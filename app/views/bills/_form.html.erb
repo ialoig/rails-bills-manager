@@ -6,21 +6,37 @@
         <div class="row">
           <div class="col-lg-8">
             <%= simple_form_for @bill do |f| %>
-            <%= f.association :company %>
-            <%= f.input :name, as: :string, required: true %>
-            <div class="row">
-              <%= f.input :period, as: :string, required: true, :placeholder => 'Select From', 
-                input_html: { class: "daterange"}, wrapper_html: { class: "col-lg-6"}, label: "From" %>
-              <%= f.input :end_period, as: :string, required: true, :placeholder => 'Select To',
-                input_html: { class: "daterange"}, wrapper_html: { class: "col-lg-6"}, label: "To" %>
-            </div>
-            <%= f.input :amount, as: :string %>
-            <div class="row">
-              <%= f.input :deadline, as: :string, required: true, :placeholder => 'Select due date',
-                input_html: { class: "daterange"}, wrapper_html: { class: "col-lg-6"}, label: "Deadline" %>
-            </div>
-            <%= f.input :paid %>
-            <%= f.button :submit, class: "btn btn-outline btn-primary" %>
+              <%= f.association :company %>
+              <%= f.input :name, as: :string, required: true %>
+              <div class="row">
+                <%= f.input :period, as: :string, wrapper: :vertical_input_group, required: true, :placeholder => 'Select From',
+                wrapper_html: { class: "col-lg-6"}, label: "From" do %>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <%= f.input_field :period, as: :string, class: "form-control daterange" %>
+                <% end %>
+
+                <%= f.input :end_period, as: :string, wrapper: :vertical_input_group, required: true, :placeholder => 'Select To',
+                wrapper_html: { class: "col-lg-6"}, label: "To" do %>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <%= f.input_field :end_period, as: :string, class: "form-control daterange" %>
+                <% end %>
+              </div>
+
+              <%= f.input :amount, wrapper: :vertical_input_group do %>
+              <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+              <%= f.input_field :amount, as: :string, class: "form-control" %>
+              <% end %>
+
+              <div class="row">
+                <%= f.input :deadline, as: :string, wrapper: :vertical_input_group, required: true, :placeholder => 'Select due date',
+                wrapper_html: { class: "col-lg-6"}, label: "Deadline" do %>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <%= f.input_field :deadline, as: :string, class: "form-control daterange" %>
+                <% end %>
+              </div>
+
+              <%= f.input :paid %>
+              <%= f.button :submit, class: "btn btn-outline btn-primary col-lg-8" %>
             <% end %>
           </div>
         </div>
