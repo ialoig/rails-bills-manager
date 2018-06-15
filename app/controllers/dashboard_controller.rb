@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
 	def index
-		@bill = Bill.all
+		@bills = Bill.all
 	end
 
 end
