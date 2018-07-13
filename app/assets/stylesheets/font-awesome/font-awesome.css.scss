@@ -218,11 +218,13 @@
 }
 .fa-check:before {
   content: "\f00c";
+  color: green;
 }
 .fa-remove:before,
 .fa-close:before,
 .fa-times:before {
   content: "\f00d";
+  color: #c04522;
 }
 .fa-search-plus:before {
   content: "\f00e";
@@ -1633,6 +1635,7 @@
 }
 .fa-trash:before {
   content: "\f1f8";
+  color: #c04522;
 }
 .fa-copyright:before {
   content: "\f1f9";
