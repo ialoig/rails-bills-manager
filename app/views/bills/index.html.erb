@@ -41,26 +41,26 @@
                     <td><%= format_period(bill.deadline) %></td>
                     <td>
                       <% if bill.paid? %>
-                      <%= content_tag :i, "", class: "fa fa-check" %>
+                        <%= content_tag :i, "", class: "" %>
                       <% else %>
-                      <%= content_tag :i, "", class: "fa fa-minus" %>
+                        <%= content_tag :i, "", class: "glyphicon glyphicon-euro" %>
                       <% end %>
                     </td>
                     <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="Show Bill" class="btn btn-default btn-circle">
+                      <button type="button" rel="tooltip" title="Show Bill" class="btn btn-simple btn-link center">
                         <%= link_to bill do %>
-                          <i class="fa fa-eye"></i>
+                          <i class="glyphicon glyphicon-eye-open"></i>
                         <% end %>
                       </button>
-                      <button type="button" rel="tooltip" title="Edit Bill" class="btn btn-warning btn-circle">
+                      <button type="button" rel="tooltip" title="Edit Bill" class="btn btn-simple btn-link center">
                         <%= link_to edit_bill_path(bill) do %>
-                        <i class="fa fa-edit"></i>
+                        <i class="glyphicon glyphicon-pencil"></i>
                         <% end %>
                       </button>
                       
-                      <button type="button" rel="tooltip" title="Delete Bill" class="btn btn-danger btn-circle">
+                      <button type="button" rel="tooltip" title="Delete Bill" class="btn btn-simple btn-link center">
                         <%= link_to bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <i class="fa fa-trash"></i>
+                        <i class="glyphicon glyphicon-trash"></i>
                         <% end %>
                       </button>
                     </td>

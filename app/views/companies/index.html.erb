@@ -33,18 +33,18 @@
                     <td class="td-actions text-right">
                       <button type="button" rel="tooltip" title="Show Company" class="btn btn-simple btn-link center">
                         <%= link_to company do %>
-                        <i class="fa fa-eye"></i>
+                          <i class="glyphicon glyphicon-eye-open"></i>
                         <% end %>
                       </button>
                       <button type="button" rel="tooltip" title="Edit Company" class="btn btn-simple btn-link center">
                         <%= link_to edit_company_path(company) do %>
-                        <i class="fa fa-edit"></i>
+                          <i class="glyphicon glyphicon-pencil"></i>
                         <% end %>
                       </button>
                       
                       <button type="button" rel="tooltip" title="Delete Company" class="btn btn-simple btn-link center">
                         <%= link_to company_path(company.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <i class="fa fa-trash"></i>
+                          <i class="glyphicon glyphicon-trash"></i>
                         <% end %>
                       </button>
                     </td>
