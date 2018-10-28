@@ -5,6 +5,8 @@ module BillsHelper
 	end
 
 	def format_period(period)
-		period.strftime("%d-%m-%Y");
+		logger.debug "period before format= #{period}";
+		formatted_period = period.strftime("%d-%m-%Y");
+		logger.debug "period after format= #{formatted_period}";
 	end
 end

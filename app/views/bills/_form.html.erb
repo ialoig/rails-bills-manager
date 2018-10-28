@@ -9,7 +9,7 @@
               <%= f.association :company %>
               <%= f.input :name, as: :string, required: true %>
               <div class="row">
-                <%= f.input :period, as: :string, wrapper: :vertical_input_group, required: true, :placeholder => 'Select From',
+                <%= f.input :period, as: :string, :input_html => { :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, :placeholder => 'Select From',
                 wrapper_html: { class: "col-lg-6"}, label: "From" do %>
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 <%= f.input_field :period, as: :string, class: "form-control daterange" %>
