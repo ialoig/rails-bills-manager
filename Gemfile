@@ -50,12 +50,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Simple Form to manage forms
 gem 'simple_form'
+
 gem 'coffee-script-source', '1.8.0'
-gem 'jquery-rails'
-gem 'bootstrap', '~> 4.0.0'
 gem "chartkick"
 gem 'groupdate'
 gem 'rails_refactor'
+
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

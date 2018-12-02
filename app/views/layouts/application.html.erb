@@ -17,30 +17,22 @@
     </head>
 
     <body>
+
+        <!-- Wrapper-->
         <div id="wrapper">
-
-            <!-- Sidebar -->
-            <%= render :partial => 'layouts/navigation' %>
-
-            <!-- Page Content -->
-            <div id="page-wrapper">
-                <div class="container-fluid">
-                    <%= yield %>
-                </div>
-                <!-- /.container-fluid -->
+            <!-- Navigation -->
+            <%= render 'layouts/navigation' %>
+            <!-- Page wraper -->
+            <div id="page-wrapper" class="gray-bg">
+                <!-- Page wrapper -->
+                <%= render 'layouts/topnavbar' %>
+                <!-- Main view  -->
+                <%= yield %>
+                <!-- Footer -->
+                <%= render 'layouts/footer' %>
             </div>
-            <!-- /#page-wrapper -->
-
+            <!-- End page wrapper-->
         </div>
-        <!-- /#wrapper -->
+        <!-- End wrapper-->
     </body>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-      $(document).ready(function() {
-        $('#dataTables-model').DataTable({
-          responsive: true
-        });
-      });
-    </script>
 </html>
