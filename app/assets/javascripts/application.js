@@ -14,4 +14,4 @@
 //= require chartkick/highcharts
 //= require chartkick
 //= require inspinia.js
-
+//= require datapicker/bootstrap-datepicker.js
