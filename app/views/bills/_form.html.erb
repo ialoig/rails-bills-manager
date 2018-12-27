@@ -13,93 +13,93 @@
 
         <div class="ibox-content">
 
-          <form role="form" class="form-inline">
-            <%= simple_form_for @bill do |f| %>
+            <div class="form-inline">
+              <%= simple_form_for @bill do |f| %>
 
-            <!-- Company -->
-            <div class="form-group"><label class="control-label">Company *</label>
-              <%= f.association :company, label: false, input_html: { class: "form-control"} %>
-            </div>
-            <!-- create new Company -->
-            <div class="form-group">
-              <%= link_to '+', new_company_path, class: "form-control btn-white" %>
-            </div>
-
-            <div class="hr-line-dashed"></div>
-          </form>
-
-          <!-- Name -->
-          <form role="form" class="form-horizontal">
-            <div class="form-group"><label class="col-sm-2">Name *</label>
-              <div class="col-sm-10">
-                <%= f.input :name, as: :string, required: true, label: false, input_html: { class: "input-group m-b"}  %>
+              <!-- Company -->
+              <div class="form-group"><label class="control-label">Company *</label>
+                <%= f.association :company, label: false, input_html: { class: "form-control"} %>
               </div>
+              <!-- create new Company -->
+              <div class="form-group">
+                <%= link_to '+', new_company_path, class: "form-control btn-white" %>
+              </div>
+
+              <div class="hr-line-dashed"></div>
             </div>
 
-            <!-- From -->
-            <div class="form-group" id="data_1"><label class="col-sm-2">From</label>
-              <div class="input-group date">
-                <div class="col-sm-12">
-                  <%= f.input :period, as: :string, :input_html => { class: "form-control", :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, label: false do %>
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                  <%= f.input_field :period, as: :string, class: "form-control", :placeholder => 'Select From' %>
-                  <% end %>
+            <!-- Name -->
+            <div class="form-horizontal">
+              <div class="form-group"><label class="col-sm-2">Name *</label>
+                <div class="col-sm-10">
+                  <%= f.input :name, as: :string, required: true, label: false, input_html: { class: "input-group m-b"}  %>
                 </div>
               </div>
-            </div>
 
-            <!-- To -->
-            <div class="form-group" id="data_1"><label class="col-sm-2">To</label>
-              <div class="input-group date">
-                <div class="col-sm-12">
-                  <%= f.input :end_period, as: :string, :input_html => { class: "form-control", :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, label: false do %>
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                  <%= f.input_field :end_period, as: :string, class: "form-control", :placeholder => 'Select To' %>
-                  <% end %>
+              <!-- From -->
+              <div class="form-group" id="data_1"><label class="col-sm-2">From</label>
+                <div class="input-group date">
+                  <div class="col-sm-12">
+                    <%= f.input :period, as: :string, :input_html => { class: "form-control", :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, label: false do %>
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      <%= f.input_field :period, as: :string, class: "form-control", :placeholder => 'Select From' %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- To -->
-            <div class="form-group"><label class="col-sm-2">Amount</label>
-              <div class="input-group date">
-                <div class="col-sm-12">
-                  <%= f.input :amount, wrapper: :vertical_input_group, label: false do %>
-                  <span class="input-group-addon"><i class="fa fa-eur"></i></span>
-                  <%= f.input_field :amount, as: :string, class: "form-control", :placeholder => 'Insert Amount (€)'  %>
-                  <% end %>
+              <!-- To -->
+              <div class="form-group" id="data_1"><label class="col-sm-2">To</label>
+                <div class="input-group date">
+                  <div class="col-sm-12">
+                    <%= f.input :end_period, as: :string, :input_html => { class: "form-control", :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, label: false do %>
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <%= f.input_field :end_period, as: :string, class: "form-control", :placeholder => 'Select To' %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Deadline -->
-            <div class="form-group"><label class="col-sm-2">Deadline</label>
-              <div class="input-group date">
-                <div class="col-sm-12">
-                  <%= f.input :deadline, as: :string, wrapper: :vertical_input_group, required: true, label: false do %>
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                  <%= f.input_field :deadline, as: :string, class: "form-control daterange", :placeholder => 'Select due date' %>
-                  <% end %>
+              <!-- To -->
+              <div class="form-group"><label class="col-sm-2">Amount</label>
+                <div class="input-group date">
+                  <div class="col-sm-12">
+                    <%= f.input :amount, wrapper: :vertical_input_group, label: false do %>
+                    <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+                      <%= f.input_field :amount, as: :string, class: "form-control", :placeholder => 'Insert Amount (€)'  %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="form-group"><label class="col-sm-2">Paid</label>
-              <div class="checkbox checkbox-primary">
-                <%= f.input :paid, label: false %>
+              <!-- Deadline -->
+              <div class="form-group" id="data_1"><label class="col-sm-2">Deadline</label>
+                <div class="input-group date">
+                  <div class="col-sm-12">
+                    <%= f.input :deadline, as: :string, wrapper: :vertical_input_group, required: true, label: false do %>
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      <%= f.input_field :deadline, as: :string, class: "form-control daterange", :placeholder => 'Select due date' %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
+
+              <div class="form-group"><label class="col-sm-2">Paid</label>
+                <div class="checkbox checkbox-primary">
+                  <%= f.input :paid, label: false %>
+                </div>
+              </div>
+
             </div>
 
-          </form>
-
-          <form role="form" class="form-inline">
-            <!-- Company -->
-            <div class="form-group">
-              <%= f.button :submit, class: "btn btn-outline btn-primary" %>
-               <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default" %>
-          </form>
-
-          <% end %>
+            <div class="form-inline">
+              <!-- Bill -->
+              <div class="form-group">
+                <%= f.button :submit, class: "btn btn-outline btn-primary" %>
+                <% end %>
+                <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default" %>
+            </div>
+                      
         </div>
       </div>
     </div>
@@ -180,6 +180,7 @@
 
     $('#data_1 .input-group.date').datepicker({
       todayBtn: "linked",
+      format: "dd-mm-yyyy",
       keyboardNavigation: false,
       forceParse: false,
       calendarWeeks: true,
