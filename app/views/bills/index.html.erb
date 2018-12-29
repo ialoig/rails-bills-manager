@@ -19,7 +19,7 @@
           <thead>
             <tr>
               <th>Company</th>
-              <th>Name</th>
+              <th>Description</th>
               <th>From</th>
               <th>To</th>
               <th>Amount</th>
@@ -34,7 +34,7 @@
                 <tr class="odd gradeX">
                   <% cache bill do %>
                     <td><%= bill.company.name %></td>
-                    <td><%= bill.name %></td>
+                    <td><%= bill.description %></td>
                     <td><%= format_period(bill.period) %></td>
                     <td><%= format_period(bill.end_period) %></td>
                     <td><%= number_to_euro (bill.amount) %></td>
