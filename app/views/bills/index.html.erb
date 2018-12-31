@@ -68,22 +68,18 @@
                       <% end %>
                     </td>
                     <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="Show Bill" class="btn btn-simple btn-link center">
-                        <%= link_to bill do %>
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        <% end %>
-                      </button>
-                      <button type="button" rel="tooltip" title="Edit Bill" class="btn btn-simple btn-link center">
-                        <%= link_to edit_bill_path(bill) do %>
-                        <i class="glyphicon glyphicon-pencil"></i>
-                        <% end %>
-                      </button>
-
-                      <button type="button" rel="tooltip" title="Delete Bill" class="btn btn-simple btn-link center">
-                        <%= link_to bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <i class="glyphicon glyphicon-trash"></i>
-                        <% end %>
-                      </button>
+                      <!-- Show -->
+                      <%= link_to bill, class: "btn btn-primary" do %>
+                        <i class="fa fa-eye"></i>
+                      <% end %>
+                      <!-- Edit -->
+                      <%= link_to edit_bill_path(bill), class: "btn btn-info" do %>
+                        <i class="fa fa-cog"></i>
+                      <% end %>
+                      <!-- Delete -->
+                      <%= link_to bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+                        <i class="fa fa-trash-o"></i>
+                      <% end %>
                     </td>
                     <% end %>
                   </tr>

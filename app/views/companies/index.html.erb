@@ -52,22 +52,18 @@
                     <td><%= company.name %></td>
                     <td><%= company.category %></td>
                     <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="Show Company" class="btn btn-simple btn-link center">
-                        <%= link_to company do %>
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        <% end %>
-                      </button>
-                      <button type="button" rel="tooltip" title="Edit Company" class="btn btn-simple btn-link center">
-                        <%= link_to edit_company_path(company) do %>
-                        <i class="glyphicon glyphicon-pencil"></i>
-                        <% end %>
-                      </button>
-                      
-                      <button type="button" rel="tooltip" title="Delete Company" class="btn btn-simple btn-link center">
-                        <%= link_to company_path(company.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <i class="glyphicon glyphicon-trash"></i>
-                        <% end %>
-                      </button>
+                      <!-- show -->
+                      <%= link_to company, class: "btn btn-primary" do %>
+                        <i class="fa fa-eye"></i>
+                      <% end %>
+                      <!-- edit -->
+                      <%= link_to edit_company_path(company), class: "btn btn-info" do %>
+                        <i class="fa fa-cog"></i>
+                      <% end %>
+                      <!-- delete -->
+                      <%= link_to company_path(company.id), method: :delete, data: {confirm: 'Are you sure?'} , class: "btn btn-danger confirm_delete" do %>
+                        <i class="fa fa-trash-o"></i>
+                      <% end %>
                     </td>
                     <% end %>
                   </tr>
@@ -88,6 +84,8 @@
   </div>
 </div>
 
+
+
 <% content_for :javascript do %>
 <script type="text/javascript">
   $(function() {
@@ -99,8 +97,8 @@
       buttons: [
       {extend: 'copy'},
       {extend: 'csv'},
-      {extend: 'excel', title: 'List of Bills'},
-      {extend: 'pdf', title: 'List of Bills'},
+      {extend: 'excel', title: 'List of Companies'},
+      {extend: 'pdf', title: 'List of Companies'},
 
       {extend: 'print',
       customize: function (win){
@@ -114,6 +112,47 @@
     }
     ]
   });
-  });
-</script>
+
+  //Override the default confirm dialog by rails
+  $.rails.allowAction = function(link){
+    if (link.data("confirm") == undefined){
+      return true;
+    }
+    $.rails.showConfirmationDialog(link);
+    return false;
+  }
+
+  //User click confirm button
+  $.rails.confirmed = function(link){
+    link.data("confirm", null);
+    link.trigger("click.rails");
+  }
+
+  //Display the confirmation dialog
+  $.rails.showConfirmationDialog = function(link){
+    var message = link.data("confirm");
+    Swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      dangerMode: true,
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        $.rails.confirmed(link);
+        Swal({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          type: 'success'
+          })
+        }
+    })
+  };
+
+
+});
+
+  </script>
 <% end %>
