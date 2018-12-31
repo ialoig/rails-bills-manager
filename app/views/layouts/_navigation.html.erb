@@ -1,9 +1,8 @@
-<!-- Navigation -->
+<!-- Navigation 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <%= link_to "Manage Your Bills", root_path, class: "navbar-brand" %>
     </div>
-    <!-- /.navbar-header -->
 
     <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
@@ -19,11 +18,8 @@
                 <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
-            <!-- /.dropdown-user -->
         </li>
-        <!-- /.dropdown -->
     </ul>
-    <!-- /.navbar-top-links -->
 
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
@@ -47,7 +43,48 @@
                 </li>
             </ul>
         </div>
-        <!-- /.sidebar-collapse -->
     </div>
-    <!-- /.navbar-static-side -->
+</nav>
+-->
+
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">Username</strong>
+                            </span> <span class="text-muted text-xs block">Example menu <b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    MYB
+                </div>
+            </li>
+
+            <li class="<%= 'active' if current_page?(root_path) %>">
+                <%= link_to root_path do %>
+                <i class="fa fa-home"></i> <span class="nav-label">Dashboard</span>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?(bills_path) %>">
+                <%= link_to bills_path do %>
+                <i class="fa fa-file-text-o"></i> <span class="nav-label">Bills</span>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?(companies_path) %>">
+                <%= link_to companies_path do %>
+                <i class="fa fa-industry"></i> <span class="nav-label">Companies</span>
+                <% end %>
+            </li>
+        </ul>
+
+    </div>
 </nav>

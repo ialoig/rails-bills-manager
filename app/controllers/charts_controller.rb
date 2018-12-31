@@ -2,10 +2,12 @@ class ChartsController < ApplicationController
 
 	def bills_amount_by_year
 		if Bill.all.count > 0
-			bills = Bill.group_by_month_of_year(:period, format: "%b").sum(:amount)
+			logger.debug "maggiore di zero"
+      bills = Bill.group_by_month_of_year(:period, format: "%b").sum(:amount)
 			logger.debug "bills = #{bills}"
   			render json: [{name: 'Total (€)', data: bills}]
   		else
+        logger.debug "sono qui"
   			bills = Bill.group_by_month_of_year(:period, format: "%b").sum(0)
   			render json: [{name: 'Total (€)', data: bills}] 
   		end
