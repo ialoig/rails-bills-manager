@@ -61,7 +61,7 @@
                         <i class="fa fa-cog"></i>
                       <% end %>
                       <!-- delete -->
-                      <%= link_to company_path(company.id), method: :delete, data: {confirm: 'Are you sure?'} , class: "btn btn-danger confirm_delete" do %>
+                      <%= link_to company_path(company.id), method: :delete, data: {confirm: 'Are you sure?'} , class: "btn btn-danger" do %>
                         <i class="fa fa-trash-o"></i>
                       <% end %>
                     </td>
@@ -112,45 +112,6 @@
     }
     ]
   });
-
-  //Override the default confirm dialog by rails
-  $.rails.allowAction = function(link){
-    if (link.data("confirm") == undefined){
-      return true;
-    }
-    $.rails.showConfirmationDialog(link);
-    return false;
-  }
-
-  //User click confirm button
-  $.rails.confirmed = function(link){
-    link.data("confirm", null);
-    link.trigger("click.rails");
-  }
-
-  //Display the confirmation dialog
-  $.rails.showConfirmationDialog = function(link){
-    var message = link.data("confirm");
-    Swal({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      dangerMode: true,
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.value) {
-        $.rails.confirmed(link);
-        Swal({
-          title: 'Deleted!',
-          text: 'Your file has been deleted.',
-          type: 'success'
-          })
-        }
-    })
-  };
-
 
 });
 
