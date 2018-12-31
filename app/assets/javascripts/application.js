@@ -11,7 +11,4 @@
 //= require pace/pace.min.js
 //= require peity/jquery.peity.min.js
 //= require slimscroll/jquery.slimscroll.min.js
-//= require chartkick/highcharts
-//= require chartkick
-//= require inspinia.js
-//= require datapicker/bootstrap-datepicker.js
+//= require_tree .
