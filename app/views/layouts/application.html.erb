@@ -17,30 +17,29 @@
     </head>
 
     <body>
+
+        <!-- Wrapper-->
         <div id="wrapper">
-
-            <!-- Sidebar -->
-            <%= render :partial => 'layouts/navigation' %>
-
-            <!-- Page Content -->
-            <div id="page-wrapper">
-                <div class="container-fluid">
-                    <%= yield %>
-                </div>
-                <!-- /.container-fluid -->
+            <!-- Navigation -->
+            <%= render 'layouts/navigation' %>
+            <!-- Page wraper -->
+            <div id="page-wrapper" class="gray-bg">
+                <!-- Page wrapper -->
+                <%= render 'layouts/topnavbar' %>
+                <!-- Main view  -->
+                <%= yield %>
+                <!-- Footer -->
+                <%= render 'layouts/footer' %>
             </div>
-            <!-- /#page-wrapper -->
-
+            <!-- End page wrapper-->
         </div>
-        <!-- /#wrapper -->
-    </body>
+        <!-- End wrapper-->
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-      $(document).ready(function() {
-        $('#dataTables-model').DataTable({
-          responsive: true
-        });
-      });
-    </script>
+        <!-- Include javascript per-controller - vendor plugins -->
+        <%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+
+        <!-- Include javascript per-view -->
+        <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
+        <%= yield :javascript %>
+    </body>
 </html>
