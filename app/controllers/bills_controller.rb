@@ -21,6 +21,12 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
+
+        #iterate through each of the attachments
+        params[:bill][:document_data].each do |file|
+          @bill.attachments.create!(:attachment => file)
+          #create a document associated with the bill that has just been created
+        end
         flash[:success] = 'Bill was successfully created.'
         format.html { redirect_to bills_url }
       else
@@ -56,7 +62,7 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:description, :period, :end_period, :amount, :deadline, :paid, :company_id, company_attributes: [:name])
+      params.require(:bill).permit(:description, :period, :end_period, :amount, :deadline, :paid, :company_id, company_attributes: [:name], :document_data => [])
     end
 
 end

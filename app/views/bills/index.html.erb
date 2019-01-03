@@ -62,9 +62,9 @@
                     <td><%= format_period(bill.deadline) %></td>
                     <td>
                       <% if bill.paid? %>
-                      <%= content_tag :i, "", class: "" %>
+                      <%= content_tag :span, "OK", class: "label label-primary" %>
                       <% else %>
-                      <%= content_tag :i, "", class: "glyphicon glyphicon-euro" %>
+                      <%= content_tag :span, "TODO", class: "label label-warning" %>
                       <% end %>
                     </td>
                     <td class="td-actions text-right">
