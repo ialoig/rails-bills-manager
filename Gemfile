@@ -71,6 +71,3 @@ gem 'sweetalert2'
 
 # To manage uploaded files
 gem 'carrierwave'
-
-# To manage forms with Bootstrap style
-gem "bootstrap_form", ">= 4.0.0"
