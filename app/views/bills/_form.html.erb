@@ -12,7 +12,8 @@
         </div>
 
         <div class="ibox-content">
-          <%= bootstrap_form_with(model: @bill, layout: :horizontal, label_col: "col-sm-2 control-label", control_col: "col-sm-10") do |f| %>
+          <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4 do |f| %>
+
             <% if @bill.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
@@ -22,40 +23,73 @@
                   <% end %>
                 </ul>
               </div>
+              <div class="hr-line-dashed"></div>
             <% end %>
 
-            <%= f.select("bill", "company_id", Hash[Company.all.map {|c| [ c.name ] }], { include_blank: true }) %>
+            <!-- Company -->
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Company *</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <%= f.collection_select(:company_id, Company.all, :id, :name, {include_blank: false, prompt: "Select a Company ..."}, {class: "form-control"}) %>
+                  <span class="input-group-addon" >
+                    <%= link_to '+', new_company_path %>
+                  </span>
+                </div>
+              </div>
+            </div>
 
             <div class="hr-line-dashed"></div>
 
-            <%= f.text_field :description, label: "Description*", required: true  %>
+            <!-- Description -->
+            <%= f.input :description, wrapper: :horizontal_input_group_b4, as: :string, label: "Description *", required: false, input_html: { maxlength: 60 } %>
 
-            <%= f.text_field :period, label: "From" , :placeholder => 'Select from', id: "data_1", required: true do 
-              concat content_tag(:span, nil, class: 'fa fa-calendar') 
-            end %>
+            <!-- From -->
+            <%= f.input :period, wrapper: :horizontal_input_group_icon, wrapper_html: { id: 'data_1' }, label: "From *",
+              :input_html => { :value => format_period(f.object.period)}, required: false do %>
+              <%= input_group_addon_icon :calendar %>
+              <%= f.input_field :period, as: :string, class: "form-control date", :placeholder => 'Select From' %>
+            <% end %>
 
-            <%= f.text_field :end_period, label: "To", :placeholder => 'Select to', required: true, extra_class: "data_1" do 
-              concat content_tag(:span, nil, class: 'fa fa-calendar')
-            end %>
+            <!-- To -->
+            <%= f.input :end_period, wrapper: :horizontal_input_group_icon, wrapper_html: { id: 'data_1' }, label: "To *",
+              :input_html => { :value => format_period(f.object.period)}, required: false do %>
+              <%= input_group_addon_icon :calendar %>
+              <%= f.input_field :end_period, as: :string, class: "form-control date", :placeholder => 'Select To' %>
+            <% end %>
 
-            <%= f.text_field :amount, :placeholder => 'Select amount (€)', required: true  do 
-              concat content_tag(:span, nil, class: 'fa fa-eur') 
-            end %>
+            <!-- Amount -->
+            <%= f.input :amount, wrapper: :horizontal_input_group_icon, label: "Amount *", required: false, input_html: { maxlength: 10 } do %>
+              <%= input_group_addon_icon :eur %>
+              <%= f.input_field :amount, as: :string, class: "form-control", :placeholder => 'Insert Amount (€)' %>
+            <% end %>
 
-            <%= f.text_field :deadline, label: "Deadline", :placeholder => 'Select deadline' do 
-              concat content_tag(:span, nil, class: 'fa fa-calendar')
-            end %>
+            <!-- Deadline -->
+            <%= f.input :deadline, wrapper: :horizontal_input_group_icon, wrapper_html: { id: 'data_1' }, label: "Deadline",
+              :input_html => { :value => format_period(f.object.period)}, required: false do %>
+              <%= input_group_addon_icon :calendar %>
+              <%= f.input_field :deadline, as: :string, class: "form-control date", :placeholder => 'Select due date' %>
+            <% end %>
 
-            <%= f.check_box :paid, class: 'form-control i-checks', required: true %>
+            <!-- Paid -->
+            <%= f.input :paid, wrapper: :horizontal_input_group_b4, label: "Paid" do %>
+              <%= f.input_field :paid, class: "checkbox-inline i-checks" %>
+            <% end %>
 
-            <!-- Create Bill -->
-            <div class="actions form-group">
-                <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default", control_col: "col-sm-offset-2 col-sm-10" %>
-                <%= f.button :submit, class: "btn btn-primary", control_col: "col-sm-offset-2 col-sm-10" %>
+            <!-- File -->
+            <%= f.input :document_data, wrapper: :horizontal_input_group_b4, label: "Attachments" do %>
+              <%= f.input_field :document_data, as: :file, class: "custom-file-input" %>
+            <% end %>
+
+            <div class="hr-line-dashed"></div>
+
+            <!-- Bill -->
+            <div class="form-group row" >
+              <%= link_to 'Back', bills_path, class: "btn btn-white" %>
+              <%= f.button :submit, class: "btn btn-primary" %>
             </div>
 
           <% end %>
-
         </div>
       </div>
     </div>
@@ -69,7 +103,7 @@
 
   $(function() {
 
-    $('.data_1').datepicker({
+    $('#data_1 .date').datepicker({
       todayBtn: "linked",
       format: "dd-mm-yyyy",
       keyboardNavigation: false,

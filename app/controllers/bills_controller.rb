@@ -11,6 +11,7 @@ class BillsController < ApplicationController
   def new
     @bill = Bill.new
     @company = @bill.build_company
+    logger.debug "company=#{Company.all}" 
   end
 
   def edit
