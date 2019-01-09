@@ -43,6 +43,11 @@
               <%= @bill.paid %>
             </p>
 
+            <p>
+              <strong>Attachment:</strong>
+              <%= @bill.attachments %>
+            </p>
+
             <%= link_to 'Edit', edit_bill_path(@bill) %> |
             <%= link_to 'Back', bills_path %>
           </div>

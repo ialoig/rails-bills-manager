@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_121552) do
+ActiveRecord::Schema.define(version: 2019_01_09_092210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "attachments", force: :cascade do |t|
-    t.bigint "bill_id"
-    t.string "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bill_id"], name: "index_attachments_on_bill_id"
-  end
 
   create_table "bills", force: :cascade do |t|
     t.text "description"
@@ -33,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_121552) do
     t.datetime "updated_at", null: false
     t.datetime "end_period"
     t.integer "company_id"
+    t.string "attachments"
     t.index ["company_id"], name: "index_bills_on_company_id"
   end
 
@@ -43,5 +36,4 @@ ActiveRecord::Schema.define(version: 2019_01_02_121552) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "attachments", "bills"
 end

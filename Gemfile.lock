@@ -53,8 +53,6 @@ GEM
     bootstrap-sass (3.4.0)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
-    bootstrap_form (4.0.0)
-      rails (>= 5.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -90,7 +88,7 @@ GEM
       activesupport (>= 4.2.0)
     groupdate (4.1.1)
       activesupport (>= 4.2)
-    i18n (1.4.0)
+    i18n (1.5.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -214,7 +212,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass
-  bootstrap_form (>= 4.0.0)
   byebug
   capybara (~> 2.13)
   carrierwave
@@ -238,4 +235,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.17.3
+   2.0.1

@@ -12,7 +12,7 @@
         </div>
 
         <div class="ibox-content">
-          <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4 do |f| %>
+          <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4, html: { multipart: true } do |f| %>
 
             <% if @bill.errors.any? %>
               <div id="error_explanation">
@@ -77,8 +77,8 @@
             <% end %>
 
             <!-- File -->
-            <%= f.input :document_data, wrapper: :horizontal_input_group_b4, label: "Attachments" do %>
-              <%= f.input_field :document_data, as: :file, class: "custom-file-input" %>
+            <%= f.input :attachments, wrapper: :horizontal_input_group_b4, label: "Attachments" do %>
+              <%= f.input_field :attachments, as: :file, class: "custom-file-input", multiple: true %>
             <% end %>
 
             <div class="hr-line-dashed"></div>
