@@ -77,9 +77,7 @@
             <% end %>
 
             <!-- File -->
-            <%= f.input :attachments, wrapper: :horizontal_input_group_b4, label: "Attachments" do %>
-              <%= f.input_field :attachments, as: :file, class: "custom-file-input", multiple: true %>
-            <% end %>
+            <%= f.input :attachments, as: :file, label: false, wrapper_html: { id: 'dropzoneForm', class: "dropzone dz-clickable" } %>
 
             <div class="hr-line-dashed"></div>
 
@@ -116,6 +114,12 @@
       checkboxClass: 'icheckbox_square-green',
       radioClass: 'iradio_square-green',
     });
+
+    Dropzone.options.dropzoneForm = {
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 2, // MB
+        dictDefaultMessage: "<strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)"
+      };
 
   });
 </script>
