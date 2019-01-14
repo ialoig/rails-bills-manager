@@ -12,7 +12,7 @@
         </div>
 
         <div class="ibox-content">
-          <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4, html: { multipart: true } do |f| %>
+          <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4 do |f| %>
 
             <% if @bill.errors.any? %>
               <div id="error_explanation">
@@ -76,9 +76,7 @@
               <%= f.input_field :paid, class: "checkbox-inline i-checks" %>
             <% end %>
 
-            <div class="fallback">
-              <%= f.file_field :attachments %><br>
-            </div>
+            <%= f.file_field :attachments, multiple: true %>
 
             <div class="hr-line-dashed"></div>
 
@@ -89,10 +87,6 @@
             </div>
 
           <% end %>
-
-          <div class="text-center">
-            <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>
-          </div>
         </div>
       </div>
     </div>

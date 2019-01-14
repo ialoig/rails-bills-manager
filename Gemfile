@@ -68,6 +68,3 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Popup confirmation
 gem 'sweetalert2'
-
-# To manage uploaded files
-gem 'carrierwave'

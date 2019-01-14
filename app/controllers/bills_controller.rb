@@ -18,12 +18,16 @@ class BillsController < ApplicationController
 
   def create
     @bill = Bill.new(bill_params)
+    attachments = params[:bill][:attachments]
 
     respond_to do |format|
       if @bill.save
+        if attachments
+          @bill.attachments.attach(attachments)
+        end
         flash[:success] = 'Bill was successfully created.'
         format.html { redirect_to bills_url }
-        format.json { render json: @bill, message: "success", status: :created, location: @bill }
+        format.json { render :show, message: "Bill was successfully created.", status: :created, location: @bill }
       else
         format.html { render :new }
         format.json { render json: @bill.errors, status: :unprocessable_entity }
@@ -32,11 +36,16 @@ class BillsController < ApplicationController
   end
 
   def update
+    attachments = params[:bill][:attachments]
+
     respond_to do |format|
       if @bill.update(bill_params)
+        if attachments
+          @bill.attachments.attach(attachments)
+        end
         flash[:success] = 'Bill was successfully updated.'
         format.html { redirect_to bills_url }
-        format.json { render json: @bill, message: "Bill was successfully updated.", status: :created, location: @bill  }
+        format.json { render :show, message: "Bill was successfully updated.", status: :created, location: @bill }
       else
         format.html { render :edit }
         format.json { render json: @bill.errors, status: :unprocessable_entity }

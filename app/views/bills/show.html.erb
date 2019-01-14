@@ -45,7 +45,10 @@
 
             <p>
               <strong>Attachment:</strong>
-              <%= @bill.attachments %>
+              <br>
+              <% @bill.attachments.each do |upload| %>
+                <%= link_to upload.filename, rails_blob_path(upload, disposition: :attachment) %><br>
+              <% end %>
             </p>
 
             <%= link_to 'Edit', edit_bill_path(@bill) %> |
