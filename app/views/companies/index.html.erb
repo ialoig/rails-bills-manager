@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
-    <h2><i class="fa fa-file-text-o fa-fw"></i> Companies</h2>
+    <h2><i class="fa fa-industry"></i> Companies</h2>
   </div>
   <div class="col-lg-2"></div>
 </div>
@@ -52,22 +52,18 @@
                     <td><%= company.name %></td>
                     <td><%= company.category %></td>
                     <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="Show Company" class="btn btn-simple btn-link center">
-                        <%= link_to company do %>
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        <% end %>
-                      </button>
-                      <button type="button" rel="tooltip" title="Edit Company" class="btn btn-simple btn-link center">
-                        <%= link_to edit_company_path(company) do %>
-                        <i class="glyphicon glyphicon-pencil"></i>
-                        <% end %>
-                      </button>
-                      
-                      <button type="button" rel="tooltip" title="Delete Company" class="btn btn-simple btn-link center">
-                        <%= link_to company_path(company.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <i class="glyphicon glyphicon-trash"></i>
-                        <% end %>
-                      </button>
+                      <!-- show -->
+                      <%= link_to company, class: "btn btn-primary" do %>
+                        <i class="fa fa-eye"></i>
+                      <% end %>
+                      <!-- edit -->
+                      <%= link_to edit_company_path(company), class: "btn btn-info" do %>
+                        <i class="fa fa-cog"></i>
+                      <% end %>
+                      <!-- delete -->
+                      <%= link_to company_path(company.id), method: :delete, data: {confirm: 'Are you sure?'} , class: "btn btn-danger" do %>
+                        <i class="fa fa-trash-o"></i>
+                      <% end %>
                     </td>
                     <% end %>
                   </tr>
@@ -99,9 +95,8 @@
       buttons: [
       {extend: 'copy'},
       {extend: 'csv'},
-      {extend: 'excel', title: 'List of Bills'},
-      {extend: 'pdf', title: 'List of Bills'},
-
+      {extend: 'excel', title: 'List of Companies'},
+      {extend: 'pdf', title: 'List of Companies'},
       {extend: 'print',
       customize: function (win){
         $(win.document.body).addClass('white-bg');
@@ -114,6 +109,7 @@
     }
     ]
   });
-  });
-</script>
+});
+
+  </script>
 <% end %>

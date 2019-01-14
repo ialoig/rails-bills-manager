@@ -23,8 +23,10 @@ class BillsController < ApplicationController
       if @bill.save
         flash[:success] = 'Bill was successfully created.'
         format.html { redirect_to bills_url }
+        format.json { render json: @bill, message: "success", status: :created, location: @bill }
       else
         format.html { render :new }
+        format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,8 +36,10 @@ class BillsController < ApplicationController
       if @bill.update(bill_params)
         flash[:success] = 'Bill was successfully updated.'
         format.html { redirect_to bills_url }
+        format.json { render json: @bill, message: "Bill was successfully updated.", status: :created, location: @bill  }
       else
         format.html { render :edit }
+        format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +60,7 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:description, :period, :end_period, :amount, :deadline, :paid, :company_id, company_attributes: [:name])
+      params.require(:bill).permit(:description, :period, :end_period, :amount, :deadline, :paid, :company_id, company_attributes: [:name], attachments: [])
     end
 
 end

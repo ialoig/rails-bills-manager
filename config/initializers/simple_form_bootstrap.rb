@@ -2,7 +2,7 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   config.error_notification_class = 'alert alert-danger'
-  config.button_class = 'btn btn-default'
+  config.button_class = 'btn btn-primary'
   config.boolean_label_class = nil
 
   config.wrappers :vertical_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
@@ -166,11 +166,41 @@ SimpleForm.setup do |config|
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
-  
 
+  config.wrappers :horizontal_input_group_b4, tag: 'div', class: 'form-group row', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'col-sm-2 col-form-label'
 
+    b.wrapper :input_group_div, tag: 'div', class: 'col-sm-10' do |append|
+      append.use :input, class: 'form-control'
+      append.use :hint,  wrap_with: { tag: 'small', class: 'text-muted form-text' }
+    end
+  end
 
+  config.wrappers :horizontal_input_group_icon, tag: 'div', class: 'form-group row', error_class: 'has-error' do |b|
+      b.use :html5
+      b.use :placeholder
+      b.use :label, class: 'col-sm-2 col-form-label'
 
+      b.wrapper :input_group_div, tag: 'div', class: 'col-sm-10' do |ba|
+        ba.wrapper tag: 'div', class: 'input-group' do |append|
+          append.use :input, class: 'form-control'
+        end
+        b.use :hint,  wrap_with: { tag: 'small', class: 'text-muted form-text' }
+      end
+  end
+
+  config.wrappers :horizontal_input_group_file, tag: 'div', class: 'form-group row', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'custom-file-label'
+
+    b.wrapper :input_group_div, tag: 'div', class: 'custom-file' do |append|
+      append.use :input, class: 'custom-file-input'
+      append.use :hint,  wrap_with: { tag: 'small', class: 'text-muted form-text' }
+    end
+  end
   
   # Wrappers for forms and inputs using the Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com)

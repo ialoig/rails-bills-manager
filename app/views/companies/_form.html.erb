@@ -12,27 +12,32 @@
 	        	</div>
 
 		        <div class="ibox-content">
-		        	<%= simple_form_for @company do |f| %>
-					<div class="form-horizontal">
-						<div class="form-group"><label class="col-sm-2">Name *</label>
-							<div class="col-sm-10">
-		                  		<%= f.input :name, as: :string, required: true, label: false %>
-		                	</div>
-		                </div>
-		                <div class="form-group"><label class="col-sm-2">Category *</label>
-							<div class="col-sm-10">
-		                  		<%= f.input :category, as: :string, required: true, label: false %>
-		                	</div>
-		                </div>
-		        	</div>
+		        	<%= simple_form_for @company, wrapper: :horizontal_input_group_b4 do |f| %>
 
-					<div class="form-inline">
-		                <!-- Bill -->
-		                <div class="form-group">
-		                  <%= f.button :submit, class: "btn btn-outline btn-primary" %>
-		                  <%= link_to 'Back', companies_path, class: "btn btn-outline btn-default" %>
-		                </div>      
-		            </div>
+			        	<% if @company.errors.any? %>
+			        		<div id="error_explanation">
+				        		<h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+				        		<ul>
+				        			<% @company.errors.full_messages.each do |message| %>
+				        			<li><%= message %></li>
+				        			<% end %>
+				        		</ul>
+				        	</div>
+				        	<div class="hr-line-dashed"></div>
+			        	<% end %>
+
+			        	<!-- Name -->
+			        	<%= f.input :name, wrapper: :horizontal_input_group_b4, as: :string, label: "Name *", required: false, input_html: { maxlength: 60 } %>
+
+			        	<!-- Category -->
+			        	<%= f.input :category, wrapper: :horizontal_input_group_b4, as: :string, label: "Category", required: false %>
+
+			        	<!-- Company -->
+			        	<div class="form-group row" >
+			        		<%= link_to 'Back', companies_path, class: "btn btn-white" %>
+			        		<%= f.button :submit, class: "btn btn-primary" %>
+			        	</div>
+
 					<% end %>
 
 				</div>
@@ -40,34 +45,3 @@
 	    </div>
 	</div>
 </div>
-
-<!--
-<div class="row">
-	<div class="col-lg-6">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				
-				<div class="row">
-					<div class="col-lg-8">
-
-						<%= simple_form_for @company do |f| %>
-						<%= f.input :name, as: :string, required: true %>
-						<%= f.input :category, as: :string, required: true, label: "Category" %>
-						<%= f.button :submit, class: "btn btn-outline btn-primary" %>
-						<% end %>
-
-					</div>
-				</div>
-
-				<br>
-				
-				<div class="wall">
-					<%= link_to 'Back', companies_path, class: "btn btn-default" %>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</div>
-
--->

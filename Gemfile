@@ -52,12 +52,22 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 
 gem 'coffee-script-source', '1.8.0'
+
+# To create charts
 gem "chartkick"
 gem 'groupdate'
+
 gem 'rails_refactor'
 
+# Template style
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+# Popup confirmation
+gem 'sweetalert2'
+
+# To manage uploaded files
+gem 'carrierwave'
