@@ -84,8 +84,6 @@
   </div>
 </div>
 
-
-
 <% content_for :javascript do %>
 <script type="text/javascript">
   $(function() {
@@ -99,7 +97,6 @@
       {extend: 'csv'},
       {extend: 'excel', title: 'List of Companies'},
       {extend: 'pdf', title: 'List of Companies'},
-
       {extend: 'print',
       customize: function (win){
         $(win.document.body).addClass('white-bg');
@@ -112,7 +109,6 @@
     }
     ]
   });
-
 });
 
   </script>

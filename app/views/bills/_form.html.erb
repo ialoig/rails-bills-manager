@@ -25,7 +25,6 @@
               </div>
               <div class="hr-line-dashed"></div>
             <% end %>
-
             <!-- Company -->
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Company *</label>
@@ -40,7 +39,7 @@
             </div>
 
             <div class="hr-line-dashed"></div>
-
+          
             <!-- Description -->
             <%= f.input :description, wrapper: :horizontal_input_group_b4, as: :string, label: "Description *", required: false, input_html: { maxlength: 60 } %>
 
@@ -99,13 +98,14 @@
   </div>
 </div>
 
+<% content_for :javascript do %>
 
 <% content_for :javascript do %>
 
 <script type="text/javascript">
 
   $(function() {
-
+    
     $('#data_1 .date').datepicker({
       todayBtn: "linked",
       format: "dd-mm-yyyy",
