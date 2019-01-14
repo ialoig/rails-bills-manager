@@ -21,14 +21,12 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
-        @bill.attachments.each do |file| 
-          @bill.attachments.create!(file: file)
-        end
-
         flash[:success] = 'Bill was successfully created.'
         format.html { redirect_to bills_url }
+        format.json { render json: @bill, message: "success", status: :created, location: @bill }
       else
         format.html { render :new }
+        format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,8 +36,10 @@ class BillsController < ApplicationController
       if @bill.update(bill_params)
         flash[:success] = 'Bill was successfully updated.'
         format.html { redirect_to bills_url }
+        format.json { render json: @bill, message: "Bill was successfully updated.", status: :created, location: @bill  }
       else
         format.html { render :edit }
+        format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end

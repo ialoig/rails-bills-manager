@@ -76,8 +76,9 @@
               <%= f.input_field :paid, class: "checkbox-inline i-checks" %>
             <% end %>
 
-            <!-- File -->
-            <%= f.input :attachments, as: :file, label: false, wrapper_html: { id: 'dropzoneForm', class: "dropzone dz-clickable" } %>
+            <div class="fallback">
+              <%= f.file_field :attachments %><br>
+            </div>
 
             <div class="hr-line-dashed"></div>
 
@@ -88,6 +89,10 @@
             </div>
 
           <% end %>
+
+          <div class="text-center">
+            <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>
+          </div>
         </div>
       </div>
     </div>
@@ -115,13 +120,23 @@
       radioClass: 'iradio_square-green',
     });
 
-    Dropzone.options.dropzoneForm = {
-        paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 2, // MB
-        dictDefaultMessage: "<strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)"
-      };
-
   });
+
+  $(function(){
+    // disable auto discover
+    Dropzone.autoDiscover = false;
+
+    // grap our upload form by its id
+    $("#upload").dropzone({
+      // restrict image size to a maximum 1MB
+      maxFilesize: 1,
+      // changed the passed param to one accepted by
+      // our rails app
+      paramName: "bill[attachments]",
+      // show remove links on each image upload
+      addRemoveLinks: true
+    }); 
+});
 </script>
 
 <% end %>
