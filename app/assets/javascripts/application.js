@@ -11,4 +11,5 @@
 //= require pace/pace.min.js
 //= require peity/jquery.peity.min.js
 //= require slimscroll/jquery.slimscroll.min.js
+//= require sweetalert2
 //= require_tree .

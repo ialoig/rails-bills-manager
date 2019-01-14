@@ -12,99 +12,87 @@
         </div>
 
         <div class="ibox-content">
-          <%= simple_form_for @bill do |f| %>
-            
+          <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4, html: { multipart: true } do |f| %>
+
+            <% if @bill.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+                <ul>
+                  <% @bill.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="hr-line-dashed"></div>
+            <% end %>
             <!-- Company -->
-            <div class="form-inline">
-                <div class="form-group"><label class="control-label">Company *</label>
-                  <%= f.association :company, label: false, input_html: { class: "form-control"} %>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Company *</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <%= f.collection_select(:company_id, Company.all, :id, :name, {include_blank: false, prompt: "Select a Company ..."}, {class: "form-control"}) %>
+                  <span class="input-group-addon" >
+                    <%= link_to '+', new_company_path %>
+                  </span>
                 </div>
-                <!-- create new Company -->
-                <div class="form-group">
-                  <%= link_to '+', new_company_path, class: "form-control btn-white" %>
-                </div>
-
-                <div class="hr-line-dashed"></div>
+              </div>
             </div>
 
-            
-            <div class="form-horizontal">
+            <div class="hr-line-dashed"></div>
+          
+            <!-- Description -->
+            <%= f.input :description, wrapper: :horizontal_input_group_b4, as: :string, label: "Description *", required: false, input_html: { maxlength: 60 } %>
 
-              <!-- Description -->
-              <div class="form-group"><label class="col-sm-2">Description *</label>
-                <div class="col-sm-10">
-                  <%= f.input :description, as: :string, required: true, label: false, input_html: { class: "input-group m-b"}  %>
-                </div>
-              </div>
+            <!-- From -->
+            <%= f.input :period, wrapper: :horizontal_input_group_icon, wrapper_html: { id: 'data_1' }, label: "From *",
+              :input_html => { :value => format_period(f.object.period)}, required: false do %>
+              <%= input_group_addon_icon :calendar %>
+              <%= f.input_field :period, as: :string, class: "form-control date", :placeholder => 'Select From' %>
+            <% end %>
 
-              <!-- From -->
-              <div class="form-group" id="data_1"><label class="col-sm-2">From</label>
-                <div class="input-group date">
-                  <div class="col-sm-12">
-                    <%= f.input :period, as: :string, :input_html => { class: "form-control", :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, label: false do %>
-                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                      <%= f.input_field :period, as: :string, class: "form-control", :placeholder => 'Select From' %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+            <!-- To -->
+            <%= f.input :end_period, wrapper: :horizontal_input_group_icon, wrapper_html: { id: 'data_1' }, label: "To *",
+              :input_html => { :value => format_period(f.object.period)}, required: false do %>
+              <%= input_group_addon_icon :calendar %>
+              <%= f.input_field :end_period, as: :string, class: "form-control date", :placeholder => 'Select To' %>
+            <% end %>
 
-              <!-- To -->
-              <div class="form-group" id="data_1"><label class="col-sm-2">To</label>
-                <div class="input-group date">
-                  <div class="col-sm-12">
-                    <%= f.input :end_period, as: :string, :input_html => { class: "form-control", :value => format_period(f.object.period)}, wrapper: :vertical_input_group, required: true, label: false do %>
-                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    <%= f.input_field :end_period, as: :string, class: "form-control", :placeholder => 'Select To' %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+            <!-- Amount -->
+            <%= f.input :amount, wrapper: :horizontal_input_group_icon, label: "Amount *", required: false, input_html: { maxlength: 10 } do %>
+              <%= input_group_addon_icon :eur %>
+              <%= f.input_field :amount, as: :string, class: "form-control", :placeholder => 'Insert Amount (€)' %>
+            <% end %>
 
-              <!-- To -->
-              <div class="form-group"><label class="col-sm-2">Amount</label>
-                <div class="input-group date">
-                  <div class="col-sm-12">
-                    <%= f.input :amount, wrapper: :vertical_input_group, label: false do %>
-                    <span class="input-group-addon"><i class="fa fa-eur"></i></span>
-                      <%= f.input_field :amount, as: :string, class: "form-control", :placeholder => 'Insert Amount (€)' %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+            <!-- Deadline -->
+            <%= f.input :deadline, wrapper: :horizontal_input_group_icon, wrapper_html: { id: 'data_1' }, label: "Deadline",
+              :input_html => { :value => format_period(f.object.period)}, required: false do %>
+              <%= input_group_addon_icon :calendar %>
+              <%= f.input_field :deadline, as: :string, class: "form-control date", :placeholder => 'Select due date' %>
+            <% end %>
 
-              <!-- Deadline -->
-              <div class="form-group" id="data_1"><label class="col-sm-2">Deadline</label>
-                <div class="input-group date">
-                  <div class="col-sm-12">
-                    <%= f.input :deadline, as: :string, wrapper: :vertical_input_group, required: true, label: false do %>
-                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                      <%= f.input_field :deadline, as: :string, class: "form-control daterange", :placeholder => 'Select due date' %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+            <!-- Paid -->
+            <%= f.input :paid, wrapper: :horizontal_input_group_b4, label: "Paid" do %>
+              <%= f.input_field :paid, class: "checkbox-inline i-checks" %>
+            <% end %>
 
-              <!-- Paid -->
-              <div class="form-group"><label class="col-sm-2">Paid</label>
-                <div class="col-sm-10">
-                  <div class="i-checks">
-                    <%= f.input :paid, label: false %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-inline">
-                <!-- Bill -->
-                <div class="form-group">
-                  <%= f.button :submit, class: "btn btn-outline btn-primary" %>
-                  <%= link_to 'Back', bills_path, class: "btn btn-outline btn-default" %>
-                </div>      
-              </div>
+            <div class="fallback">
+              <%= f.file_field :attachments %><br>
             </div>
+
+            <div class="hr-line-dashed"></div>
+
+            <!-- Bill -->
+            <div class="form-group row" >
+              <%= link_to 'Back', bills_path, class: "btn btn-white" %>
+              <%= f.button :submit, class: "btn btn-primary" %>
+            </div>
+
           <% end %>
+
+          <div class="text-center">
+            <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>
+          </div>
         </div>
-        
       </div>
     </div>
   </div>
@@ -112,11 +100,13 @@
 
 <% content_for :javascript do %>
 
+<% content_for :javascript do %>
+
 <script type="text/javascript">
 
   $(function() {
-
-    $('#data_1 .input-group.date').datepicker({
+    
+    $('#data_1 .date').datepicker({
       todayBtn: "linked",
       format: "dd-mm-yyyy",
       keyboardNavigation: false,
@@ -126,11 +116,27 @@
     });
 
     $('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square-green',
+      checkboxClass: 'icheckbox_square-green',
+      radioClass: 'iradio_square-green',
     });
 
   });
+
+  $(function(){
+    // disable auto discover
+    Dropzone.autoDiscover = false;
+
+    // grap our upload form by its id
+    $("#upload").dropzone({
+      // restrict image size to a maximum 1MB
+      maxFilesize: 1,
+      // changed the passed param to one accepted by
+      // our rails app
+      paramName: "bill[attachments]",
+      // show remove links on each image upload
+      addRemoveLinks: true
+    }); 
+});
 </script>
 
 <% end %>
