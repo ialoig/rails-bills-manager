@@ -76,7 +76,9 @@
               <%= f.input_field :paid, class: "checkbox-inline i-checks" %>
             <% end %>
 
-            <%= f.file_field :attachments, multiple: true %>
+            <div class="fileinput-new">
+              <%= f.file_field :attachments, multiple: true, class: "custom-file-input" %>
+            </div>
 
             <div class="hr-line-dashed"></div>
 

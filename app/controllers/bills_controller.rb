@@ -22,9 +22,6 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.save
-        if attachments
-          @bill.attachments.attach(attachments)
-        end
         flash[:success] = 'Bill was successfully created.'
         format.html { redirect_to bills_url }
         format.json { render :show, message: "Bill was successfully created.", status: :created, location: @bill }
@@ -40,9 +37,6 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       if @bill.update(bill_params)
-        if attachments
-          @bill.attachments.attach(attachments)
-        end
         flash[:success] = 'Bill was successfully updated.'
         format.html { redirect_to bills_url }
         format.json { render :show, message: "Bill was successfully updated.", status: :created, location: @bill }

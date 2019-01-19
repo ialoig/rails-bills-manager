@@ -11,7 +11,7 @@ module IconsHelper
     signup:         'user-plus',
     edit:           'pencil',
     group_creator:  'gavel',
-    calendar: 		'calendar'
+    calendar: 		  'calendar'
   }
 
   def input_group_addon_icon(name, options = {})

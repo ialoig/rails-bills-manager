@@ -20,12 +20,12 @@
 
             <p>
               <strong>From:</strong>
-              <%= @bill.period %>
+              <%= format_period(@bill.period) %>
             </p>
 
             <p>
               <strong>To:</strong>
-              <%= @bill.end_period %>
+              <%= format_period(@bill.end_period) %>
             </p>
 
             <p>
@@ -35,7 +35,7 @@
 
             <p>
               <strong>Deadline:</strong>
-              <%= @bill.deadline %>
+              <%= format_period(@bill.deadline) %>
             </p>
 
             <p>
