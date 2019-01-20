@@ -76,7 +76,10 @@
               <%= f.input_field :paid, class: "checkbox-inline i-checks" %>
             <% end %>
 
-            <div class="fileinput-new">
+            <div class="hr-line-dashed"></div>
+
+            <div class="custom-file">
+              <%= f.label :attachments,"Attachments", class: "custom-file-label" %>
               <%= f.file_field :attachments, multiple: true, class: "custom-file-input" %>
             </div>
 
@@ -116,23 +119,13 @@
       radioClass: 'iradio_square-green',
     });
 
+    $('.custom-file-input').on('change', function() {
+     let fileName = $(this).val().split('\\').pop();
+     $(this).next('.custom-file-label').addClass("selected").html(fileName);
+   }); 
   });
 
-  $(function(){
-    // disable auto discover
-    Dropzone.autoDiscover = false;
 
-    // grap our upload form by its id
-    $("#upload").dropzone({
-      // restrict image size to a maximum 1MB
-      maxFilesize: 1,
-      // changed the passed param to one accepted by
-      // our rails app
-      paramName: "bill[attachments]",
-      // show remove links on each image upload
-      addRemoveLinks: true
-    }); 
-});
 </script>
 
 <% end %>

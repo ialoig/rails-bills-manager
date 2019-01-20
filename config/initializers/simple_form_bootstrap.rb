@@ -194,8 +194,8 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_input_group_file, tag: 'div', class: 'custom-file', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
-    b.use :label, class: 'custom-file-label'
     b.use :input, class: 'custom-file-input'
+    b.use :label, class: 'custom-file-label'
     b.use :hint,  wrap_with: { tag: 'small', class: 'text-muted form-text' }
 
   end

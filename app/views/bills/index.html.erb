@@ -70,17 +70,11 @@
                     <td class="text-right">
                       <div class="btn-group">
                         <!-- Show -->
-                        <%= link_to bill, class: "btn-white btn btn-xs" do %>
-                        View
-                        <% end %>
+                        <%= link_to "View", bill, class: "btn-white btn btn-xs" %>
                         <!-- Edit -->
-                        <%= link_to edit_bill_path(bill), class: "btn-white btn btn-xs" do %>
-                        Edit
-                        <% end %>
+                        <%= link_to "Edit", edit_bill_path(bill), class: "btn-white btn btn-xs" %>
                         <!-- Delete -->
-                        <%= link_to bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-white btn btn-xs" do %>
-                       Delete
-                        <% end %>
+                        <%= link_to "Delete", bill_path(bill.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-white btn btn-xs" %>
                       </div>
                     </td>
                     <% end %>

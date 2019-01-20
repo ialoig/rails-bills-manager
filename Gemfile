@@ -62,9 +62,13 @@ gem 'rails_refactor'
 # Template style
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Popup confirmation
 gem 'sweetalert2'
+
+#to preview upload image files
+gem "mini_magick"
