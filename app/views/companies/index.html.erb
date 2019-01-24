@@ -52,18 +52,14 @@
                     <td><%= company.name %></td>
                     <td><%= company.category %></td>
                     <td class="td-actions text-right">
-                      <!-- show -->
-                      <%= link_to company, class: "btn btn-primary" do %>
-                        <i class="fa fa-eye"></i>
-                      <% end %>
-                      <!-- edit -->
-                      <%= link_to edit_company_path(company), class: "btn btn-info" do %>
-                        <i class="fa fa-cog"></i>
-                      <% end %>
-                      <!-- delete -->
-                      <%= link_to company_path(company.id), method: :delete, data: {confirm: 'Are you sure?'} , class: "btn btn-danger" do %>
-                        <i class="fa fa-trash-o"></i>
-                      <% end %>
+                      <div class="btn-group">
+                        <!-- show -->
+                        <%= link_to "View", company, class: "btn-white btn btn-xs" %>
+                        <!-- edit -->
+                        <%= link_to "Edit", edit_company_path(company), class: "btn-white btn btn-xs" %>
+                        <!-- delete -->
+                        <%= link_to "Delete", company_path(company.id), method: :delete, data: {confirm: 'Are you sure?'} , class: "btn-white btn btn-xs" %>
+                      </div>
                     </td>
                     <% end %>
                   </tr>
