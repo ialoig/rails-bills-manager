@@ -6,7 +6,7 @@ module DashboardHelper
         title: {
           text: 'Amount (€)'
         },
-        tickInterval: 20,
+        tickInterval: 10,
         labels: {
             format: '{value} €'
         }
@@ -27,7 +27,7 @@ module DashboardHelper
         title: {
           text: 'Amount (€)'
         },
-        tickInterval: 20,
+        tickInterval: 10,
         labels: {
             format: '{value} €'
         }
