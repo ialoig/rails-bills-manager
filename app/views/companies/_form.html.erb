@@ -27,10 +27,10 @@
 			        	<% end %>
 
 			        	<!-- Name -->
-			        	<%= f.input :name, wrapper: :horizontal_input_group_b4, as: :string, label: "Name *", required: false, input_html: { maxlength: 60 } %>
+			        	<%= f.input :name, as: :string, label: "Name *", required: false, input_html: { maxlength: 60 } %>
 
 			        	<!-- Category -->
-			        	<%= f.input :category, wrapper: :horizontal_input_group_b4, as: :string, label: "Category", required: false %>
+			        	<%= f.input :category, collection: Company.categories.keys, label: "Category", required: false %>
 
 			        	<!-- Company -->
 			        	<div class="form-group row" >

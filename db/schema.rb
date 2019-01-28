@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_161937) do
+ActiveRecord::Schema.define(version: 2019_01_28_141500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,14 +36,6 @@ ActiveRecord::Schema.define(version: 2019_01_14_161937) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "attachments", force: :cascade do |t|
-    t.bigint "bill_id"
-    t.string "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bill_id"], name: "index_attachments_on_bill_id"
-  end
-
   create_table "bills", force: :cascade do |t|
     t.text "description"
     t.datetime "period"
@@ -59,11 +51,10 @@ ActiveRecord::Schema.define(version: 2019_01_14_161937) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "category"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "attachments", "bills"
 end
