@@ -18,7 +18,6 @@ class BillsController < ApplicationController
 
   def create
     @bill = Bill.new(bill_params)
-    attachments = params[:bill][:attachments]
 
     respond_to do |format|
       if @bill.save
@@ -33,8 +32,6 @@ class BillsController < ApplicationController
   end
 
   def update
-    attachments = params[:bill][:attachments]
-
     respond_to do |format|
       if @bill.update(bill_params)
         flash[:success] = 'Bill was successfully updated.'

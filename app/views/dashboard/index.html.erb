@@ -39,8 +39,10 @@
 		<div class="col-lg-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>Annual</h5>
-					<div ibox-tools></div>
+					<h5>Total Amount by month</h5>
+					<span class="pull-right text-right">
+						<small>last 12 month</small>
+					</span>
 				</div>
 				<div class="ibox-content">
 					<div>
@@ -53,10 +55,16 @@
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>Amount by Companies</h5>
+					<div class="pull-right">
+						<div class="btn-group">
+							<%= link_to 'Last 12 month', bills_amount_by_company_charts_path, remote: true, class: "btn btn-xs btn-white active" %>
+							<%= link_to 'Last 6 month', amount_by_company_last_six_charts_path, remote: true, class: "btn btn-xs btn-white" %>
+						</div>
+					</div>
 				</div>
 				<div class="ibox-content">
-					<div>
-						<%= bills_amount_by_company %>
+					<div id="chart">
+						<%= render partial: 'dashboard/amount_by_company_last_six' %>
 					</div>
 				</div>
 			</div>
@@ -67,12 +75,12 @@
 		<div class="col-lg-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>Total</h5>
+					<h5>Total by Companies</h5>
 					<div ibox-tools></div>
 				</div>
 				<div class="ibox-content">
 					<div>
-						<%= pie_chart bills_total_amount_by_companies_charts_path, messages: {empty: "Insert your first bill to view chart"} %>
+						<%= bills_total_amount_by_companies %>
 					</div>
 				</div>
 			</div>
