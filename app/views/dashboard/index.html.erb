@@ -1,75 +1,10 @@
 <div class="wrapper wrapper-content">
 
-	<div class="row">
-		<div class="col-lg-3">
-			<div class="ibox ">
-				<div class="ibox-title">
-					<h5>Bills</h5>
-				</div>
-				<div class="ibox-content">
-					<h1 class="no-margins"><%= @bills.count %></h1>
-					<div class="stat-percent font-bold text-info">
-						<%= link_to new_bill_path do %>
-						New <i class="fa fa-plus"></i>
-					</div>
-					<% end %>
-					<small>Total bills</small>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<span class="label label-info pull-right">Annual</span>
-					<h5>Companies</h5>
-				</div>
-				<div class="ibox-content">
-					<h1 class="no-margins"><%= @companies.count %></h1>
-					<div class="stat-percent font-bold text-info">
-						<%= link_to new_company_path do %>
-						New <i class="fa fa-plus"></i>
-					</div>
-					<% end %>
-					<small>Total companies</small>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>Total Amount by month</h5>
-					<span class="pull-right text-right">
-						<small>last 12 month</small>
-					</span>
-				</div>
-				<div class="ibox-content">
-					<div>
-						<%= bills_amount_by_year %>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>Amount by Companies</h5>
-					<div class="pull-right">
-						<div class="btn-group">
-							<%= link_to 'Last 12 month', bills_amount_by_company_charts_path, remote: true, class: "btn btn-xs btn-white active" %>
-							<%= link_to 'Last 6 month', amount_by_company_last_six_charts_path, remote: true, class: "btn btn-xs btn-white" %>
-						</div>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<div id="chart">
-						<%= render partial: 'dashboard/amount_by_company_last_six' %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<%= render 'widget' %>
+
+	<%= render 'amount_by_year' %>
+
+	<%= render 'amount_by_company' %>
 
 	<div class="row">
 		<div class="col-lg-6">

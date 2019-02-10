@@ -14,29 +14,15 @@ class ChartsController < ApplicationController
   end
 
   def bills_amount_by_company
+    last_month = params[:last_month]
+    logger.debug "last_month passed= #{last_month}"
     respond_to do |format|
       if Bill.all.count > 0
-        amount_by_company = Bill.includes(:company).group('companies.name').group_by_month(:period, format: "%b %y", last: 12).sum(:amount).chart_json
-        logger.debug "amount_by_company = #{amount_by_company}"
+        amount_by_company = Bill.includes(:company).group('companies.name').group_by_month(:period, format: "%b %y", last: last_month).sum(:amount).chart_json
         format.json {render json: amount_by_company}
         format.js
       else
-       amount_by_company = Bill.includes(:company).group_by_month(:period, format: "%b %y", last: 12).sum(0).chart_json
-       format.json {render json: amount_by_company}
-       format.js
-      end
-    end
-  end
-
-  def amount_by_company_last_six
-    respond_to do |format|
-      if Bill.all.count > 0
-        amount_by_company = Bill.includes(:company).group('companies.name').group_by_month(:period, format: "%b %y", last: 6).sum(:amount).chart_json
-        logger.debug "amount_by_company = #{amount_by_company}"
-        format.json {render json: amount_by_company}
-        format.js
-      else
-       amount_by_company = Bill.includes(:company).group_by_month(:period, format: "%b %y", last: 6).sum(0).chart_json
+       amount_by_company = Bill.includes(:company).group_by_month(:period, format: "%b %y", last: last_month).sum(0).chart_json
        format.json {render json: amount_by_company}
        format.js
       end

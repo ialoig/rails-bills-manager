@@ -1,35 +1,25 @@
 module DashboardHelper
 
 	def bills_amount_by_year
-    column_chart bills_amount_by_year_charts_path, height: '300px', library: {
-      yAxis: {
-        title: {
-          text: 'Amount (€)'
-        },
-        tickInterval: 10,
-        labels: {
-            format: '{value} €'
-        }
-      },
-      xAxis: {
-        crosshair: true
-      },
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.y}</b><br/>',
-        valueSuffix: ' €',
-      },
-    }
+    column_chart bills_amount_by_year_charts_path, basic_opts("Amount (€)")
  end
 
-  def bills_amount_by_company
-    column_chart bills_amount_by_company_charts_path, height: '300px', library: {
+  def bills_amount_by_company(last_month)
+    logger.debug "aaa#{last_month}"
+    column_chart bills_amount_by_company_charts_path(last_month: last_month), basic_opts("Amount (€)")
+  end
+
+
+  def basic_opts(title_y) {
+    height: '300px',
+    library: {
       yAxis: {
         title: {
-          text: 'Amount (€)'
+          text: title_y
         },
         tickInterval: 10,
         labels: {
-            format: '{value} €'
+          format: '{value} €'
         }
       },
       xAxis: {
@@ -40,30 +30,10 @@ module DashboardHelper
         valueSuffix: ' €',
       },
     }
-  end
+  }
+end
 
 
-  def amount_by_company_last_six
-    logger.debug 'helper method'
-    column_chart amount_by_company_last_six_charts_path, height: '300px', library: {
-      yAxis: {
-        title: {
-          text: 'Amount (€)'
-        },
-        tickInterval: 10,
-        labels: {
-            format: '{value} €'
-        }
-      },
-      xAxis: {
-        crosshair: true,
-      },
-      tooltip: { 
-        pointFormat: '{series.name}: <b>{point.y}</b><br/>',
-        valueSuffix: ' €',
-      },
-    }
-  end
 
   def total_bills
     @bill.count
