@@ -1,17 +1,17 @@
 module DashboardHelper
 
-	def bills_amount_by_year
-    column_chart bills_amount_by_year_charts_path, basic_opts("Amount (€)")
+	def bills_amount_by_year(last_month)
+    column_chart bills_amount_by_year_charts_path(last_month: last_month), basic_opts("Amount (€)")
  end
 
   def bills_amount_by_company(last_month)
-    logger.debug "aaa#{last_month}"
     column_chart bills_amount_by_company_charts_path(last_month: last_month), basic_opts("Amount (€)")
   end
 
 
   def basic_opts(title_y) {
     height: '300px',
+    id: SecureRandom.hex(7),
     library: {
       yAxis: {
         title: {

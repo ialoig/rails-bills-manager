@@ -1,24 +1,14 @@
 <div class="wrapper wrapper-content">
 
 	<%= render 'widget' %>
-
-	<%= render 'amount_by_year' %>
-
-	<%= render 'amount_by_company' %>
+	<%= render 'total_amount_by_companies' %>
 
 	<div class="row">
-		<div class="col-lg-6">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>Total by Companies</h5>
-					<div ibox-tools></div>
-				</div>
-				<div class="ibox-content">
-					<div>
-						<%= bills_total_amount_by_companies %>
-					</div>
-				</div>
-			</div>
-		</div>
+		<%= render 'amount_by_year_last_12' %>
 	</div>
+	<div class="row">
+		<%= render 'amount_by_company_last_12' %>
+	</div>
+
+	
 </div>
