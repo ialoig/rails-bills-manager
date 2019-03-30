@@ -36,14 +36,6 @@ ActiveRecord::Schema.define(version: 2019_01_28_141500) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "attachments", force: :cascade do |t|
-    t.bigint "bill_id"
-    t.string "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bill_id"], name: "index_attachments_on_bill_id"
-  end
-
   create_table "bills", force: :cascade do |t|
     t.text "description"
     t.datetime "period"
@@ -65,5 +57,4 @@ ActiveRecord::Schema.define(version: 2019_01_28_141500) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "attachments", "bills"
 end
