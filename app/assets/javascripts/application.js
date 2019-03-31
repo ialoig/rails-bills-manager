@@ -5,11 +5,16 @@
 // or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
 //
 //
-//= require jquery/jquery-3.1.1.min.js
+//= require jquery
 //= require bootstrap-sprockets
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require peity/jquery.peity.min.js
 //= require slimscroll/jquery.slimscroll.min.js
 //= require sweetalert2
-//= require_tree .
+//= require inspinia.js
+//= require charts.js
+//= require confirmation.js
+//= require forms.js
+//= require rails.js
+//= require tables.js

@@ -23,7 +23,7 @@ class BillsController < ApplicationController
       if @bill.save
         flash[:success] = 'Bill was successfully created.'
         format.html { redirect_to bills_url }
-        format.json { render json: @bill, message: "success", status: :created, location: @bill }
+        format.json { render :show, message: "Bill was successfully created.", status: :created, location: @bill }
       else
         format.html { render :new }
         format.json { render json: @bill.errors, status: :unprocessable_entity }
@@ -36,7 +36,7 @@ class BillsController < ApplicationController
       if @bill.update(bill_params)
         flash[:success] = 'Bill was successfully updated.'
         format.html { redirect_to bills_url }
-        format.json { render json: @bill, message: "Bill was successfully updated.", status: :created, location: @bill  }
+        format.json { render :show, message: "Bill was successfully updated.", status: :created, location: @bill }
       else
         format.html { render :edit }
         format.json { render json: @bill.errors, status: :unprocessable_entity }
