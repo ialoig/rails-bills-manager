@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Ruby version
+# ruby '2.5.3'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
@@ -62,6 +65,7 @@ gem 'rails_refactor'
 # Template style
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -69,5 +73,5 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Popup confirmation
 gem 'sweetalert2'
 
-# To manage uploaded files
-gem 'carrierwave'
+#to preview upload image files
+gem "mini_magick"
