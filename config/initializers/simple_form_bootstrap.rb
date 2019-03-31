@@ -197,7 +197,6 @@ SimpleForm.setup do |config|
     b.use :input, class: 'custom-file-input'
     b.use :label, class: 'custom-file-label'
     b.use :hint,  wrap_with: { tag: 'small', class: 'text-muted form-text' }
-
   end
   
   # Wrappers for forms and inputs using the Bootstrap toolkit.

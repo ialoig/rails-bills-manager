@@ -13,7 +13,6 @@
 
         <div class="ibox-content">
           <%= simple_form_for @bill, wrapper: :horizontal_input_group_b4 do |f| %>
-
             <% if @bill.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
@@ -92,6 +91,10 @@
             </div>
 
           <% end %>
+
+          <div class="text-center">
+            <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>
+          </div>
         </div>
       </div>
     </div>
@@ -122,7 +125,6 @@
        $(this).next('.custom-file-label').addClass("selected").html(fileName);
      }); 
     });
-
 
   </script>
 <% end %>
