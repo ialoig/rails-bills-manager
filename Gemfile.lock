@@ -220,7 +220,6 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara (~> 2.13)
-  carrierwave
   chartkick
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
