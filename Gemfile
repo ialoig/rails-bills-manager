@@ -75,3 +75,6 @@ gem 'sweetalert2'
 
 #to preview upload image files
 gem "mini_magick"
+
+# authentication
+gem 'devise'
