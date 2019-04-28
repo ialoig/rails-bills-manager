@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   	resources :companies
   	resources :bills
   	resources :dashboard
@@ -14,4 +13,9 @@ Rails.application.routes.draw do
   	end
 
   	root "dashboard#index"
+
+    # change names as login, logout and registration from default values
+    devise_for :users, path_names: {
+      sign_in: 'login', sign_out: 'logout', sign_up: 'registration'
+    }
 end

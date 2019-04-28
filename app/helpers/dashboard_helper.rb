@@ -2,7 +2,7 @@ module DashboardHelper
 
 	def bills_amount_by_year(last_month)
     column_chart bills_amount_by_year_charts_path(last_month: last_month), basic_opts("Amount (€)")
- end
+  end
 
   def bills_amount_by_company(last_month)
     column_chart bills_amount_by_company_charts_path(last_month: last_month), basic_opts("Amount (€)")
@@ -31,8 +31,7 @@ module DashboardHelper
       },
     }
   }
-end
-
+  end
 
 
   def total_bills

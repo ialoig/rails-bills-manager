@@ -1,5 +1,6 @@
 class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
+  
 
   def index
     @bills = Bill.all
