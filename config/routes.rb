@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 	  	end
   	end
 
-  	root "dashboard#index"
+  	#root "dashboard#index"
+    get 'home',      :to => "dashboard#index"
+    root "welcome#index"
 
     # change names as login, logout and registration from default values
     devise_for :users, path_names: {
